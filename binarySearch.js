@@ -218,4 +218,26 @@ function search(arr,k){
   return "-1";
 }
 
-//  10. 
+//  10. Ross wants to solve the given mathematical equation which states that, he needs to find the east non-negative integer Xo, that shall make the value of given equation atleast K i.e.,
+    // A Xo^2 + B Xo + C >= K
+    // He is given A,B,C and K, which form the above equation. He has to answer T independent test cases.
+    // Output -1 if there is no possible positive value of Xo
+
+    function findAns(a,b,c,k){
+      if(c>=k){
+          return -1
+      }
+      for(let i=1; i<10000; i++){
+          let ans = (a*(i**2))+(b*i)+c
+          if(ans>=k){
+              return i
+          }
+      }
+  }
+
+// 11. 
+
+
+
+
+

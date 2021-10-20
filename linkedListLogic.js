@@ -337,3 +337,55 @@ var addOneToLinkedList = function(head) {
 
 
 
+//  13. Delete duplicate-value nodes from a sorted linked list
+
+function removeDuplicates(head) {
+    
+  let temp = head;
+  while(temp.next!=null){
+      if(temp.data==temp.next.data){
+          temp.next = temp.next.next
+      }else{
+          temp = temp.next
+      }
+  }
+  return head
+}
+
+// 14. Given pointers to the head nodes of 2 linked lists that merge together at some point, find the node where the two lists merge.
+    // The merge point is where both lists point to the same node, i.e. they reference the same memory location. It is guaranteed that
+    // the two head nodes will be different, and neither will be NULL. If the lists share a common node, return that node's data value.
+
+    function findMergeNode(head1, head2) {
+      //get the count 
+      function getCount(head){
+          let c = 0;
+          while(head.next!=null){
+              head = head.next
+              c++;
+          }
+          return c
+      }
+      // get the commen node
+      function getNode(d,head1,head2){
+          for(let i=0; i<d; i++){
+              head1 = head1.next;
+          }
+          while(head1!=null && head2!=null){
+              if(head1==head2){
+                  return head1.data
+              }else{
+                  head1 = head1.next
+                  head2 = head2.next
+              }
+          }
+      }
+      let c1 = getCount(head1)
+      let c2 = getCount(head2)
+      // check the diffreance
+      if(c1>c2){
+          return getNode(c1-c2,head1,head2)
+      }else{
+          return getNode(c2-c1,head2,head1)
+      }
+  }
