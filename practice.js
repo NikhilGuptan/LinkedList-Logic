@@ -1,18 +1,19 @@
-let n = 5
-let q = [[1,2,100],[2,5,100],[3,4,100]];
+let value = 6
+let dp = []
+for(let i=0; i<value+1; i++){
+    dp.push(-1)
+}
+dp[0] = 0
+dp[1] = 1
 
-function arrayManipulation(n, q) {
-    let arr = []
-    for(let i=0; i<n; i++){
-        arr[i] = 0
+function fibonachi(n){
+    if(dp[n]!=-1){
+        return dp[n]
+    }else{
+        dp[n] = fibonachi(n-1)+fibonachi(n-2)
     }
-    // console.log(arr);
-    for(let i=0; i<q.length; i++){
-        for(let j=q[i][0]; j<=q[i][1]; j++){
-            arr[j-1] += q[i][2]
-        }    
-    }
-    return arr
+    return dp[n]
 }
 
-console.log(arrayManipulation(n,q))
+console.log(fibonachi(value));
+// console.log(dp);
