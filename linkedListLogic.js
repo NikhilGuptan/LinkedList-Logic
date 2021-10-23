@@ -99,7 +99,7 @@ function nth_node(head,n){
 }
 
 
-// 5. Reverse the Linked List
+// 5. Reverse the singly Linked List
 
 const LinkedListNode = class {
     constructor(nodeData) {
@@ -389,3 +389,22 @@ function removeDuplicates(head) {
           return getNode(c2-c1,head2,head1)
       }
   }
+
+  // 15. Reverse a doubly linked list
+
+  function reverse(head) {
+    let stack = [];
+    let temp = head;
+     
+    while (temp != null){
+      stack.push(temp.data);
+      temp = temp.next;
+    }
+    temp = head;
+     
+    while (temp != null){
+      temp.data = stack.pop();
+      temp = temp.next;
+    }
+    return head
+}

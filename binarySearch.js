@@ -131,28 +131,8 @@ let low = 0;
   return ans
 }
 
-//  6. For each test case, you are given N integers and K, your task is to write a program that prints "1" (without quotes) 
-// if there are 2 integers present in the array whose sum is K.Else print "-1"(without quotes).
 
-function pair(arr,k){
-  arr = arr.sort(function(a,b){
-   return a-b;
-  })
- let i=0; 
-  let j=arr.length-1;
-  while(i<j){
-    if(arr[i]+arr[j]==k){
-     	return "1";
-    }else if(arr[i]+arr[j]<k){
-     i++;
-    }else if(arr[i]+arr[j]>k){
-     j--;
-    }
-  }
-  return "-1";
-}
-
-//  7. Given an array of length n , and it is sorted and rotated at some unknown point, find the minimum element in it.
+//  6. Given an array of length n , and it is sorted and rotated at some unknown point, find the minimum element in it.
 
 function findMin(arr,low,high){  
         if (high < low){
@@ -175,7 +155,7 @@ function findMin(arr,low,high){
      return findMin(arr, mid+1, high);
 }
 
-//  8. Given an array of size n, which is strictly increasing and then strictly decreasing in order. Find out the index (0-based) which is the peak of the array.
+//  7. Given an array of size n, which is strictly increasing and then strictly decreasing in order. Find out the index (0-based) which is the peak of the array.
 
 function findPeak(arr){
  let low = 0;
@@ -192,7 +172,7 @@ function findPeak(arr){
   } 
 }
 
-//  9. Given a sorted(increasing order) array of length n and is rotated by some value beforehand. Find the index of the target element  K in the rotated array in O(logn) time. If not found print -1.
+//  8. Given a sorted(increasing order) array of length n and is rotated by some value beforehand. Find the index of the target element  K in the rotated array in O(logn) time. If not found print -1.
 
 function search(arr,k){
  let low = 0;
@@ -218,24 +198,6 @@ function search(arr,k){
   return "-1";
 }
 
-//  10. Ross wants to solve the given mathematical equation which states that, he needs to find the east non-negative integer Xo, that shall make the value of given equation atleast K i.e.,
-    // A Xo^2 + B Xo + C >= K
-    // He is given A,B,C and K, which form the above equation. He has to answer T independent test cases.
-    // Output -1 if there is no possible positive value of Xo
-
-    function findAns(a,b,c,k){
-      if(c>=k){
-          return -1
-      }
-      for(let i=1; i<10000; i++){
-          let ans = (a*(i**2))+(b*i)+c
-          if(ans>=k){
-              return i
-          }
-      }
-  }
-
-// 11. 
 
 
 

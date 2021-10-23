@@ -32,7 +32,8 @@ function countPlindrom(strArray){
     return count;
 }
 
-// 2. A string K is said to be disjointed, if the string can be broken down into two parts, not necessarily equal, such that the two parts are equal to the strings A and B.
+// 2. A string K is said to be disjointed, if the string can be broken down into two parts, not necessarily equal,
+//  such that the two parts are equal to the strings A and B.
 // You are free to rearrange the string K any way you like, before it can be broke.
 // Given a string K, and two strings A and B, find if the strings K is disjointed.
 

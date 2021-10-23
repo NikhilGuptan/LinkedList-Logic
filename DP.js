@@ -1,4 +1,4 @@
-//  0. fibonacci  series
+// 1. fibonacci  series
 
 let value = 6
 let dp = []
@@ -18,7 +18,7 @@ function fibonachi(n){
 }
 console.log(fibonachi(value));
 
-//  1. In Masai, they have a very strange monetary system.
+//  2. In Masai, they have a very strange monetary system.
 // Each Masaian gold coin has an integer number written on it. A coin n can be exchanged in a bank into three coins: n/2, n/3 and n/4. But these numbers are all rounded down (the banks have to make a profit).
 // You can also sell Masaian coins for Indian Rupees. The exchange rate is 1:1. But you can not buy Masaian coins.
 // You have one gold coin. What is the maximum amount of Indian Rupees you can get for it?
@@ -41,7 +41,7 @@ function masai(a){
     }
 }
 
-// 2. (Recursive & Backtracking based solution to Subset sum problem) You are given a set of numbers and a sum ‘S’.
+// 3. (Recursive & Backtracking based solution to Subset sum problem) You are given a set of numbers and a sum ‘S’.
 //  Your task is to find a subset from the given set of numbers such that the sum of elements in the subset is equal to sum ‘S’.
 
 function findParty(arr,n,k){
