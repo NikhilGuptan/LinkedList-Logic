@@ -65,4 +65,122 @@ function bracketCheck(arr){
    }
  }
 
-//  4. 
+//  4. You have three stacks of cylinders where each cylinder has the same diameter, but they may vary in height.
+//  You can change the height of a stack by removing and discarding its topmost cylinder any number of times.
+// Find the maximum possible height of the stacks such that all of the stacks are exactly the same height.
+
+function equalStacks(stack1, stack2, stack3) {
+  let st1 = [];let st2 = [];let st3 = []
+  for(let i=stack1.length-1; i>=0; i--){
+      st1.push(stack1[i])
+  }
+  stack1 = st1
+  for(let i=stack2.length-1; i>=0; i--){
+      st2.push(stack2[i])
+  }
+  stack2 = st2
+  for(let i=stack3.length-1; i>=0; i--){
+      st3.push(stack3[i])
+  }
+  stack3 = st3
+  
+  let s1 = [];let s2 = [];let s3 = [];
+  s1.push(stack1[0]);s2.push(stack2[0]);s3.push(stack3[0]);
+  
+  for(let i=1; i<stack1.length; i++){
+      let a = s1[i-1]+stack1[i]
+      s1.push(a)
+  }
+  for(let i=1; i<stack2.length; i++){
+      let a = s2[i-1]+stack2[i]
+      s2.push(a)
+  }
+  for(let i=1; i<stack3.length; i++){
+      let a = s3[i-1]+stack3[i]
+      s3.push(a)
+  }
+  
+  let max = 0;
+  
+  while(s1.length!=0 && s2.length!=0 && s3.length!=0){
+      let first = s1[s1.length-1]
+      let secound = s2[s2.length-1]
+      let third = s3[s3.length-1]
+      
+      if(first==secound && secound==third){
+          max = s1[s1.length-1]
+          break;
+      }
+      if(first>=secound && first>=third){
+          s1.pop()
+      }else if(secound>=first && secound>=third){
+          s2.pop()
+      }else if(third>=first && third>=secound){
+          s3.pop()
+      }
+  }
+  return max
+}
+
+// 5. Implement Queue using Stack
+
+class Queue {
+    constructor()
+    {
+        this.S1 = new Stack()
+        this.S2 = new Stack()
+    }
+    push(value) {
+    	this.S1.stack.push(value);
+    }
+    pop() {
+     	if(!this.isEmpty()){
+         this.S1.stack.shift();
+        }else{
+         return false;
+        }
+    }
+    front() {
+    	return this.S1.stack[0];
+    }
+    isEmpty() {
+    	if(this.S1.stack.length==0){
+         return true;
+        }else{
+         return false;
+        }
+    }
+}
+
+// 6. Implement Stack using Queue
+
+class Stack {
+    constructor()
+    {
+        this.Q1 = new Queue()
+        this.Q2 = new Queue()
+         // console.log(this.Q1)
+    }
+    push(value) {
+    	this.Q1.queue.push(value);
+    }
+    pop() {
+    	if(this.isEmpty()){
+          this.Q1.queue.pop();
+        }else{
+         return false;
+        }
+    }
+    top() {
+        return this.Q1.queue[this.Q1.queue.length-1]
+    }
+    isEmpty() {
+    	if(this.Q1.queue.length==0){
+         return false;
+        }else{
+         return true;
+        }
+    }
+}
+
+// 7. 
