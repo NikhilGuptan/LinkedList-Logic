@@ -204,4 +204,16 @@ function find(arr){
     return "-1"
 }
 
+// 11. Given an array A, print starting and ending index of all subarrays in the array which has sum 0. (0-indexing)
+let arr = [6,3,-1,-3,4,-2,2,4,6];
+for(let i=0; i<arr.length; i++){
+    let sum = 0;
+    for(let j=i; j<arr.length; j++){
+        sum += arr[j];
+        if(sum==0){
+            console.log(i,j)
+        }
+    }
+}
 
+// 12. 

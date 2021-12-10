@@ -183,4 +183,28 @@ class Stack {
     }
 }
 
-// 7. 
+// 7. Given an array of N elements, find the next greater element for each element in the array, print -1 if it does not exits. Refer to the sample I/O for better understanding
+
+function greaterElemet(arr, n){
+    let s = [];
+    let arr1 = new Array(n);
+     
+    for (let i = n - 1; i >= 0; i--){
+         
+        while (!s.length == 0 && s[s.length - 1] <= arr[i]){
+            s.pop();
+        }
+        if (s.length == 0){
+            arr1[i] = -1;  
+        }
+        else{
+            arr1[i] = s[s.length - 1];
+        }
+        s.push(arr[i]);
+    }
+    let ans = ""
+    for(let i = 0; i < n; i++){
+        ans += arr1[i]+" "
+    }
+    return ans
+}

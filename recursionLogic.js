@@ -164,7 +164,7 @@ function paran(s,open,close,n){
     console.log(output+input[0])
     printSubsequence(input.substring(1), output + input[0]);
     printSubsequence(input.substring(1), output);
-}
+  }
 
 //  12. Given a collection of numbers, return all possible permutations.
 
@@ -192,3 +192,99 @@ function permute(str,l,r){
   }
 }
 
+// 13. The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
+// Given an integer n, print the number of distinct solutions to the n-queens puzzle.
+
+function isQueenSafe(chess,row,col){
+  for(let i=row-1,j=col; i>=0; i--){
+     if(chess[i][j]==1){
+      return false;
+     }
+  }
+  
+  for(let i=row-1, j=col-1; i>=0 && j>=0; i--,j--){
+  	if(chess[i][j]==1){
+      return false;
+     }
+  }
+  
+  for(let i=row-1, j=col+1; i>=0 && j<chess.length; i--,j++){
+  	if(chess[i][j]==1){
+      return false;
+     }
+  }
+  
+  return true;
+  
+}
+
+var  count = 0
+
+function nQueen(chess,row){
+ if(row>=chess.length){
+   count++;
+   return;
+ }
+  for(let col=0; col<chess.length; col++){
+   if(isQueenSafe(chess,row,col)){
+     chess[row][col] = 1;
+     nQueen(chess,row+1);
+     chess[row][col] = 0;
+   }
+  }
+}
+
+function runProgram(input) {
+	var n = +input;
+  
+  var chess = [];
+  
+  for(var i=1; i<=n; i++){
+    var arr = [];
+    for(var j=1; j<=n; j++){
+      arr.push(0);
+    }
+    chess.push(arr)
+  }
+  
+  
+  nQueen(chess,0)
+    console.log(count)
+  
+
+}
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
+let read = "";
+process.stdin.on("data", function (input) {
+    read += input;
+});
+process.stdin.on("end", function () {
+	read = read.replace(/\n$/,"")
+   runProgram(read);
+});
+process.on("SIGINT", function () {
+    read = read.replace(/\n$/,"")
+    runProgram(read);
+    process.exit(0);
+});
+
+// 14. Your friend Angela knows three operations on a string,
+//  she can insert a character, delete a character, and replace a character. 
+// She wants to convert a string str1 to str2, by using any of the operations any number of times.
+//  Return the minimum number of operations required for the same.
+
+function findAsn(str1,str2,m,n){
+  if(n==0){
+      return m;
+  }else if(m==0){
+      return n;
+  }
+  if(str1[m-1]==str2[n-1]){
+      return findAsn(str1, str2, m-1, n-1);
+  }
+   return 1 + Math.min(findAsn(str1,  str2, m, n-1),
+                       findAsn(str1,  str2, m-1, n),
+                       findAsn(str1,  str2, m-1, n-1)
+                       ); 
+}

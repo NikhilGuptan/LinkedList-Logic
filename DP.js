@@ -58,3 +58,51 @@ function findParty(arr,n,k){
     return Math.max(findParty(arr,n-1,k),findParty(arr,n-1,k-arr[n]))
 }
 
+// 4. A robber is planning to rob houses along a street. Each house has a certain amount of gold stashed,
+//  the only constraint stopping you from robbing each of them is that adjacent houses have a very smart security system
+//  connected andit will automatically alert the police if two adjacent houses were robbed  on the same night.
+
+function findAns(arr,n){
+    if(n==0){
+        return 0;
+    } 
+    if(n==1){
+        return arr[0]
+    }
+    if(n==2){
+        return Math.max(arr[0],arr[1])
+    }
+    let dp = new Array(n);
+    
+    dp[0] = arr[0]
+    dp[1] = Math.max(arr[0],arr[1]);
+    
+    for(let i=2; i<n; i++){
+        dp[i] = Math.max(arr[i]+dp[i-2],dp[i-1]);
+    }
+    return dp[n-1]
+ }
+
+//  5. You are given n trees and their heights.
+//  Your task is to write a program that calculates the maximum number of trees whose height is in increasing order. They need not be in continuous manner.
+
+function findMax(arr){
+    let dp = new Array(arr.length)
+    dp[0] = 1;
+    
+    for(let i=1; i<arr.length; i++){
+        dp[i] = 1;
+        for(let j=0; j<i; j++){
+            if(arr[j]<arr[i]){
+                dp[i] = Math.max(dp[i],dp[j]+1)    
+            }
+        }
+    }
+    let max = dp[0]
+    for(let i=1; i<dp.length; i++){
+        if(dp[i]>max){
+            max = dp[i]
+        }
+    }
+    return max
+}
